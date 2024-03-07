@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# displays information about subdomains.
+# function to retrrieve and display informations about subdomains.
 
 domain_information() {
     local domain="$1"
@@ -9,12 +9,13 @@ domain_information() {
     echo "$subdomain $line" | awk '{printf "The subdomain %s is a %s record and points to %s\n", $1, $2, $3}'
 }
 
-#check number of arguments passed to scripts
-if [ "$#" -eq 1 ]; then
+#check number of arguments passed to the script
+
+if [ "$#" == 1 ]; then
     domain_information "$1" "www"
     domain_information "$1" "lb-01"
     domain_information "$1" "web-01"
     domain_information "$1" "web-02"
-elif [ "$#" -eq 2 ]; then
+elif [ "$#" == 2 ]; then
     domain_information "$1" "$2"
 fi
