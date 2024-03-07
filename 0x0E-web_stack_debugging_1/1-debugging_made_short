@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+# same as task 0 but -f added to ln to forcefully remove the file if it exists
