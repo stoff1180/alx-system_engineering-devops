@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Fixes a server bug that the user listening on port 8080.
+
+# Set the 'user' directive in the nginx configuration file to 'nginx'
+sed -i "s/#user www-data/user nginx/" /etc/nginx/nginx.conf
+
+# Replace port 80 with port 8080 in the default site configuration
+sed -i "s/80/8080/g" /etc/nginx/sites-available/default
+
+# Change permissions of the nginx configuration file to read-only for owner
+chmod 644 /etc/nginx/nginx.conf
+
+# Terminate any running instances of Apache2
+pkill apache2
+
+# Start the nginx service as the 'nginx' user
+sudo -u nginx service nginx start
