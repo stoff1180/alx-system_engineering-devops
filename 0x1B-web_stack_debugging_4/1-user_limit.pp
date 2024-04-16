@@ -1,4 +1,4 @@
-# Change configuration to login with the holberton user and open a file.
+# Change the configuration to login with the holberton user/open a file.
 # Increase hard file limit for user holberton
 exec { 'increase-hard-file-limit-for-holberton-user':
   command => 'sed -i "/holberton hard/s/5/50000/" /etc/security/limits.conf',
